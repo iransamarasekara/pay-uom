@@ -124,13 +124,13 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
   };
 
   return (
-    <div className="p-4 sm:p-8">
-      <h2 className="text-xl font-bold text-gray-700 mb-2">
+    <div className="p-4 sm:px-6 sm:pt-2 sm:pb-4">
+      <h2 className="text-xl font-bold text-gray-700 mb-6">
         Please enter your payment details
       </h2>
-      <p className="text-gray-500 mb-6 text-sm">
+      {/* <p className="text-gray-500 mb-6 text-sm">
         All fields are required and information will be secured and encrypted
-      </p>
+      </p> */}
 
       {status.status === "processing" && (
         <div className="mb-6 bg-blue-50 p-4 rounded-lg flex items-center">
@@ -161,9 +161,10 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div className="relative group">
-            <label className="text-gray-600 mb-1 block text-sm font-medium">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
               Fee Type <span className="text-red-500">*</span>
             </label>
+            <hr className="border-1 absolute border-white z-1 mx-2 w-24" />
             <div className="relative">
               <select
                 name="feeType"
@@ -180,8 +181,8 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
                 <option value="" disabled>
                   Select Fee Type
                 </option>
-                <option value="tuition">Hostel Fee</option>
-                <option value="exam">Library Fee</option>
+                <option value="Hostel Fee">Hostel Fee</option>
+                <option value="Library Fee">Library Fee</option>
               </select>
               <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                 <svg
@@ -199,9 +200,10 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
           </div>
 
           <div className="relative">
-            <label className="text-gray-600 mb-1 block text-sm font-medium">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
               Your Name <span className="text-red-500">*</span>
             </label>
+            <hr className="border-1 absolute border-white z-1 mx-2 w-24" />
             <input
               type="text"
               name="name"
@@ -222,9 +224,10 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
           </div>
 
           <div className="relative">
-            <label className="text-gray-600 mb-1 block text-sm font-medium">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
               Phone No <span className="text-red-500">*</span>
             </label>
+            <hr className="border-1 absolute border-white z-1 mx-2 w-24" />
             <div className="flex">
               <span className="inline-flex items-center px-3 text-gray-500 bg-gray-100 rounded-l-lg border border-r-0 border-gray-300">
                 <svg
@@ -252,8 +255,8 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
                 placeholder="Enter your phone number"
                 className={`flex-1 w-full px-4 py-3 rounded-r-lg bg-white border ${
                   errors.phone
-                    ? "border-red-500"
-                    : "border-gray-300 focus:border-yellow-500"
+                    ? "border-red-500 border-l-0"
+                    : "border-gray-300 focus:border-yellow-500 border-l-0"
                 } transition duration-200 outline-none`}
               />
             </div>
@@ -263,9 +266,10 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
           </div>
 
           <div className="relative">
-            <label className="text-gray-600 mb-1 block text-sm font-medium">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
               NIC/Passport <span className="text-red-500">*</span>
             </label>
+            <hr className="border-1 absolute border-white z-1 mx-2 w-28" />
             <div className="flex">
               <span className="inline-flex items-center px-3 text-gray-500 bg-gray-100 rounded-l-lg border border-r-0 border-gray-300">
                 <svg
@@ -293,8 +297,8 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
                 placeholder="Enter NIC or Passport number"
                 className={`flex-1 w-full px-4 py-3 rounded-r-lg bg-white border ${
                   errors.nicPassport
-                    ? "border-red-500"
-                    : "border-gray-300 focus:border-yellow-500"
+                    ? "border-red-500 border-l-0"
+                    : "border-gray-300 focus:border-yellow-500 border-l-0"
                 } transition duration-200 outline-none`}
               />
             </div>
@@ -304,9 +308,10 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
           </div>
 
           <div className="relative group">
-            <label className="text-gray-600 mb-1 block text-sm font-medium">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
               Card Type <span className="text-red-500">*</span>
             </label>
+            <hr className="border-1 absolute border-white z-1 mx-2 w-24" />
             <div className="relative">
               <select
                 name="cardType"
@@ -342,9 +347,10 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
           </div>
 
           <div className="relative">
-            <label className="text-gray-600 mb-1 block text-sm font-medium">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
               Paying Amount <span className="text-red-500">*</span>
             </label>
+            <hr className="border-1 absolute border-white z-1 mx-2 w-[120px]" />
             <div className="flex">
               <span className="inline-flex items-center px-3 text-gray-500 bg-gray-100 rounded-l-lg border border-r-0 border-gray-300">
                 <svg
@@ -372,8 +378,8 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
                 placeholder="Enter amount"
                 className={`flex-1 w-full px-4 py-3 rounded-r-lg bg-white border ${
                   errors.amount
-                    ? "border-red-500"
-                    : "border-gray-300 focus:border-yellow-500"
+                    ? "border-red-500 border-l-0"
+                    : "border-gray-300 focus:border-yellow-500 border-l-0"
                 } transition duration-200 outline-none`}
               />
             </div>
@@ -381,11 +387,14 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
               <p className="text-red-500 text-xs mt-1">{errors.amount}</p>
             )}
           </div>
+        </div>
 
-          <div className="md:col-span-2">
-            <label className="text-gray-600 mb-1 block text-sm font-medium">
+        <div className="flex flex-col sm:flex-row gap-4 justify-between">
+          <div className="w-full relative">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
               Payment Reference <span className="text-red-500">*</span>
             </label>
+            <hr className="border-1 absolute border-white z-1 mx-2 w-36" />
             <input
               type="text"
               name="reference"
@@ -404,38 +413,37 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
               <p className="text-red-500 text-xs mt-1">{errors.reference}</p>
             )}
           </div>
-        </div>
-
-        <div className="md:col-span-2 mt-6">
-          <button
-            type="button"
-            onClick={handleVerify}
-            disabled={status.status === "processing"}
-            className="bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium py-3 px-6 rounded-lg text-center transition duration-200 w-full md:w-auto flex items-center justify-center disabled:opacity-50"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          <div className="">
+            <button
+              type="button"
+              onClick={handleVerify}
+              disabled={status.status === "processing"}
+              className="bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium py-3 px-6 rounded-lg text-center transition duration-200 w-full md:w-auto flex items-center justify-center disabled:opacity-50"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-              />
-            </svg>
-            VERIFY
-          </button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5 mr-2"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              VERIFY
+            </button>
+          </div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center mt-8 gap-4">
           <button
             type="button"
             disabled
-            className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-200 transition duration-200 w-full md:w-auto flex items-center justify-center disabled:opacity-50"
+            className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-200 transition duration-200 w-full md:w-auto flex items-center justify-center disabled:opacity-50"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -456,7 +464,7 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
           <button
             type="submit"
             disabled={status.status === "processing"}
-            className="px-6 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-lg hover:from-yellow-600 hover:to-yellow-700 transition duration-200 w-full md:w-auto flex items-center justify-center shadow-lg disabled:opacity-50"
+            className="px-4 py-2 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-lg hover:from-yellow-600 hover:to-yellow-700 transition duration-200 w-full md:w-auto flex items-center justify-center shadow-lg disabled:opacity-50"
           >
             {status.status === "processing" ? "PROCESSING..." : "NEXT"}
             {status.status !== "processing" && (

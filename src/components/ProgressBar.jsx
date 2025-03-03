@@ -4,7 +4,7 @@ const ProgressBar = ({ currentStep }) => {
   const steps = ["Information", "Confirmation", "Payment Status"];
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-8">
+    <div className="max-w-3xl mx-auto px-6 py-4">
       <div className="relative">
         <div className="absolute top-5 w-full flex justify-between px-2 sm:px-10">
           {steps.map(

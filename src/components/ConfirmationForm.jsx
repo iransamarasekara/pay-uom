@@ -1,6 +1,6 @@
 import React from "react";
 
-const ConfirmationForm = ({ onSubmit, status, paymentData, onBack }) => {
+const ConfirmationForm = ({ onSubmit, paymentData, onBack }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -19,15 +19,15 @@ const ConfirmationForm = ({ onSubmit, status, paymentData, onBack }) => {
   };
 
   return (
-    <div className="p-4 sm:p-8">
-      <h2 className="text-xl font-bold text-gray-700 mb-2">
+    <div className="p-4 sm:px-6 sm:pt-2 sm:pb-4">
+      <h2 className="text-xl font-bold text-gray-700 mb-6">
         Confirm your payment details
       </h2>
-      <p className="text-gray-500 mb-6 text-sm">
+      {/* <p className="text-gray-500 mb-6 text-sm">
         Please review your information carefully before proceeding
-      </p>
+      </p> */}
 
-      {status.status === "success" && (
+      {/* {status.status === "success" && (
         <div className="mb-6 bg-green-50 p-2 sm:p-4 rounded-lg flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -45,14 +45,15 @@ const ConfirmationForm = ({ onSubmit, status, paymentData, onBack }) => {
           </svg>
           <span className="text-green-700">{status.message}</span>
         </div>
-      )}
+      )} */}
 
       <form onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div className="relative group">
-            <label className="text-gray-600 mb-1 block text-sm font-medium">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
               Fee Type
             </label>
+            <hr className="border-1 absolute border-gray-50 z-1 mx-2 w-20" />
             <input
               type="text"
               value={paymentData.feeType || ""}
@@ -62,9 +63,10 @@ const ConfirmationForm = ({ onSubmit, status, paymentData, onBack }) => {
           </div>
 
           <div className="relative">
-            <label className="text-gray-600 mb-1 block text-sm font-medium">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
               Your Name
             </label>
+            <hr className="border-1 absolute border-gray-50 z-1 mx-2 w-24" />
             <input
               type="text"
               value={paymentData.name || ""}
@@ -74,9 +76,10 @@ const ConfirmationForm = ({ onSubmit, status, paymentData, onBack }) => {
           </div>
 
           <div className="relative">
-            <label className="text-gray-600 mb-1 block text-sm font-medium">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
               Phone No
             </label>
+            <hr className="border-1 absolute border-gray-50 z-1 mx-2 w-20" />
             <div className="flex">
               <span className="inline-flex items-center px-3 text-gray-500 bg-gray-100 rounded-l-lg border border-r-0 border-gray-300">
                 <svg
@@ -104,9 +107,10 @@ const ConfirmationForm = ({ onSubmit, status, paymentData, onBack }) => {
           </div>
 
           <div className="relative">
-            <label className="text-gray-600 mb-1 block text-sm font-medium">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
               NIC/Passport
             </label>
+            <hr className="border-1 absolute border-gray-50 z-1 mx-2 w-24" />
             <div className="flex">
               <span className="inline-flex items-center px-3 text-gray-500 bg-gray-100 rounded-l-lg border border-r-0 border-gray-300">
                 <svg
@@ -134,9 +138,10 @@ const ConfirmationForm = ({ onSubmit, status, paymentData, onBack }) => {
           </div>
 
           <div className="relative group">
-            <label className="text-gray-600 mb-1 block text-sm font-medium">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
               Card Type
             </label>
+            <hr className="border-1 absolute border-gray-50 z-1 mx-2 w-20" />
             <input
               type="text"
               value={paymentData.cardType || ""}
@@ -146,9 +151,10 @@ const ConfirmationForm = ({ onSubmit, status, paymentData, onBack }) => {
           </div>
 
           <div className="relative">
-            <label className="text-gray-600 mb-1 block text-sm font-medium">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
               Paying Amount
             </label>
+            <hr className="border-1 absolute border-gray-50 z-1 mx-2 w-28" />
             <div className="flex">
               <span className="inline-flex items-center px-3 text-gray-500 bg-gray-100 rounded-l-lg border border-r-0 border-gray-300">
                 <svg
@@ -175,10 +181,11 @@ const ConfirmationForm = ({ onSubmit, status, paymentData, onBack }) => {
             </div>
           </div>
 
-          <div className="md:col-span-2">
-            <label className="text-gray-600 mb-1 block text-sm font-medium">
+          <div className="md:col-span-2 relative">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
               Payment Reference
             </label>
+            <hr className="border-1 absolute border-gray-50 z-1 mx-2 w-36" />
             <input
               type="text"
               value={paymentData.reference || ""}
@@ -188,7 +195,7 @@ const ConfirmationForm = ({ onSubmit, status, paymentData, onBack }) => {
           </div>
         </div>
 
-        <div className="bg-yellow-50 border border-yellow-200 p-2 sm:p-4 rounded-lg mb-6">
+        {/* <div className="bg-yellow-50 border border-yellow-200 p-2 sm:p-4 rounded-lg mb-6">
           <div className="flex items-start">
             <div className="flex-shrink-0">
               <svg
@@ -217,13 +224,13 @@ const ConfirmationForm = ({ onSubmit, status, paymentData, onBack }) => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div className="flex flex-col md:flex-row justify-between items-center mt-8 gap-4">
           <button
             type="button"
             onClick={handleBack}
-            className="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-200 w-full md:w-auto flex items-center justify-center"
+            className="px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 transition duration-200 w-full md:w-auto flex items-center justify-center"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -243,7 +250,7 @@ const ConfirmationForm = ({ onSubmit, status, paymentData, onBack }) => {
           </button>
           <button
             type="submit"
-            className="px-6 py-3 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-lg hover:from-yellow-600 hover:to-yellow-700 transition duration-200 w-full md:w-auto flex items-center justify-center shadow-lg"
+            className="px-4 py-2 bg-gradient-to-r from-yellow-500 to-yellow-600 text-white rounded-lg hover:from-yellow-600 hover:to-yellow-700 transition duration-200 w-full md:w-auto flex items-center justify-center shadow-lg"
           >
             CONFIRM PAYMENT
             <svg

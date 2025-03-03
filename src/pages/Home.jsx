@@ -83,10 +83,10 @@ const Home = () => {
           alt="Background"
         />
       </div>
-      <div className="relative w-full max-w-4xl bg-white/80 backdrop-blur-sm rounded-lg md:rounded-2xl shadow-xl md:shadow-2xl overflow-hidden">
+      <div className="relative w-full max-w-4xl bg-white backdrop-blur-sm rounded-lg md:rounded-2xl shadow-xl md:shadow-2xl overflow-hidden">
         {/* Header with logo */}
-        <div className="bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-800 p-4 sm:p-6 md:p-8 text-center relative">
-          <div className="absolute items-center justify-items-start">
+        <div className="bg-gradient-to-r from-yellow-600 via-yellow-500 to-yellow-800 p-4 sm:p-6 md:p-6 text-center relative">
+          <div className="absolute top-4 items-center justify-items-start">
             <div className="bg-white/50 backdrop-blur-sm p-1 sm:p-2 rounded-full">
               <img
                 src={uom_logo}
