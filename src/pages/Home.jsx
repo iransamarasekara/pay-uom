@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { uom_cover, uom_logo } from "../assets";
+import {
+  master_card_logo,
+  unionpay_logo,
+  uom_cover,
+  uom_logo,
+  visa_payment_logo,
+} from "../assets";
 import ProgressBar from "../components/ProgressBar";
 import PaymentForm from "../components/PaymentForm";
 import ConfirmationForm from "../components/ConfirmationForm";
@@ -128,12 +134,12 @@ const Home = () => {
           <PaymentStatus status={paymentStatus} onReset={handleReset} />
         )}
 
-        <div className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 border-t">
-          <div className="flex flex-col sm:flex-row items-center sm:justify-between gap-2 sm:gap-0">
+        <div className="px-4 sm:px-6 md:px-8 py-3 sm:py-4 border-t border-gray-400">
+          <div className="flex flex-col sm:flex-row items-center sm:justify-between gap-4 sm:gap-0">
             <div className="text-xs sm:text-sm text-gray-500 text-center sm:text-left">
               <span>© 2025 University of Moratuwa Payment Gateway</span>
             </div>
-            <div className="flex gap-2">
+            {/* <div className="flex gap-2">
               <span className="bg-yellow-100 text-yellow-800 text-xs font-medium px-2 py-0.5 rounded-full flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -168,6 +174,11 @@ const Home = () => {
                 </svg>
                 Verified
               </span>
+            </div> */}
+            <div className="flex gap-4 items-center justify-center">
+              <img src={visa_payment_logo} alt="Visa" className="h-5" />
+              <img src={master_card_logo} alt="MasterCard" className="h-5" />
+              <img src={unionpay_logo} alt="UnionPay" className="h-5" />
             </div>
           </div>
         </div>
