@@ -9,6 +9,7 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
     cardType: paymentData?.cardType || "",
     amount: paymentData?.amount || "",
     reference: paymentData?.reference || "",
+    email: paymentData?.email || "",
   });
 
   const [errors, setErrors] = useState({});
@@ -73,6 +74,11 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
       case "reference":
         if (!value) error = "Payment reference is required";
         break;
+      case "email":
+        if (!value) error = "Email is required";
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+          error = "Please enter a valid email address";
+        break;
       default:
         break;
     }
@@ -124,7 +130,7 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
   };
 
   return (
-    <div className="p-4 sm:px-6 sm:pt-2 sm:pb-4">
+    <div className="p-4 sm:px-6 sm:pt-0 sm:pb-4">
       <h2 className="text-xl font-bold text-gray-700 mb-6">
         Please enter your payment details
       </h2>
@@ -387,55 +393,97 @@ const PaymentForm = ({ onSubmit, status, paymentData }) => {
               <p className="text-red-500 text-xs mt-1">{errors.amount}</p>
             )}
           </div>
-        </div>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-between">
-          <div className="w-full relative">
-            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
-              Payment Reference <span className="text-red-500">*</span>
-            </label>
-            <hr className="border-1 absolute border-white z-1 mx-2 w-36" />
-            <input
-              type="text"
-              name="reference"
-              value={formData.reference}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              disabled={status.status === "processing"}
-              placeholder="Enter payment reference"
-              className={`w-full px-4 py-3 rounded-lg bg-white border ${
-                errors.reference
-                  ? "border-red-500"
-                  : "border-gray-300 focus:border-yellow-500"
-              } transition duration-200 outline-none`}
-            />
-            {errors.reference && (
-              <p className="text-red-500 text-xs mt-1">{errors.reference}</p>
-            )}
-          </div>
-          <div className="">
-            <button
-              type="button"
-              onClick={handleVerify}
-              disabled={status.status === "processing"}
-              className="bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium py-3 px-6 rounded-lg text-center transition duration-200 w-full md:w-auto flex items-center justify-center disabled:opacity-50"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
+          <div className="flex flex-col sm:flex-row gap-3 justify-between">
+            <div className="w-full relative">
+              <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
+                Payment Reference <span className="text-red-500">*</span>
+              </label>
+              <hr className="border-1 absolute border-white z-1 mx-2 w-36" />
+              <input
+                type="text"
+                name="reference"
+                value={formData.reference}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={status.status === "processing"}
+                placeholder="Enter payment reference"
+                className={`w-full px-4 py-3 rounded-lg bg-white border ${
+                  errors.reference
+                    ? "border-red-500"
+                    : "border-gray-300 focus:border-yellow-500"
+                } transition duration-200 outline-none`}
+              />
+              {errors.reference && (
+                <p className="text-red-500 text-xs mt-1">{errors.reference}</p>
+              )}
+            </div>
+            <div className="">
+              <button
+                type="button"
+                onClick={handleVerify}
+                disabled={status.status === "processing"}
+                className="bg-gray-100 hover:bg-gray-200 text-gray-600 font-medium py-3 px-4 rounded-lg text-center transition duration-200 w-full md:w-auto flex items-center justify-center disabled:opacity-50"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              VERIFY
-            </button>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5 mr-1"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                  />
+                </svg>
+                VERIFY
+              </button>
+            </div>
+          </div>
+
+          <div className="relative">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
+              Email <span className="text-red-500">*</span>
+            </label>
+            <hr className="border-1 absolute border-white z-1 mx-2 w-16" />
+            <div className="flex">
+              <span className="inline-flex items-center px-3 text-gray-500 bg-gray-100 rounded-l-lg border border-r-0 border-gray-300">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </span>
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                disabled={status.status === "processing"}
+                placeholder="Enter email address"
+                className={`flex-1 w-full px-4 py-3 rounded-r-lg bg-white border ${
+                  errors.email
+                    ? "border-red-500 border-l-0"
+                    : "border-gray-300 focus:border-yellow-500 border-l-0"
+                } transition duration-200 outline-none`}
+              />
+            </div>
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+            )}
           </div>
         </div>
 

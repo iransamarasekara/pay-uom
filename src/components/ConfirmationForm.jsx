@@ -19,7 +19,7 @@ const ConfirmationForm = ({ onSubmit, paymentData, onBack }) => {
   };
 
   return (
-    <div className="p-4 sm:px-6 sm:pt-2 sm:pb-4">
+    <div className="p-4 sm:px-6 sm:pt-0 sm:pb-4">
       <h2 className="text-xl font-bold text-gray-700 mb-6">
         Confirm your payment details
       </h2>
@@ -181,7 +181,7 @@ const ConfirmationForm = ({ onSubmit, paymentData, onBack }) => {
             </div>
           </div>
 
-          <div className="md:col-span-2 relative">
+          <div className="relative">
             <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
               Payment Reference
             </label>
@@ -192,6 +192,37 @@ const ConfirmationForm = ({ onSubmit, paymentData, onBack }) => {
               readOnly
               className="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-300 outline-none cursor-not-allowed"
             />
+          </div>
+
+          <div className="relative">
+            <label className="text-gray-600 mb-1 block text-sm font-medium absolute z-2 -top-3 left-2 rounded-2xl px-2">
+              Email
+            </label>
+            <hr className="border-1 absolute border-gray-50 z-1 mx-2 w-16" />
+            <div className="flex">
+              <span className="inline-flex items-center px-3 text-gray-500 bg-gray-100 rounded-l-lg border border-r-0 border-gray-300">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  />
+                </svg>
+              </span>
+              <input
+                type="text"
+                value={paymentData.email || ""}
+                readOnly
+                className="flex-1 w-full px-4 py-3 rounded-r-lg bg-gray-50 border border-gray-300 outline-none cursor-not-allowed"
+              />
+            </div>
           </div>
         </div>
 
